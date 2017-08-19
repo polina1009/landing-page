@@ -2,7 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>ТЗ</title>
+        <title>Landing page</title>
+
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
 
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -31,7 +36,10 @@
                     </div>
                 </div>
                 <div class="counter-block">
-                    <span class="counter-block__number">88</span>
+                    <span class="counter-block__number">
+                        <span class="counter-block__digit" id="js-counter-1">8</span>
+                        <span class="counter-block__digit" id="js-counter-2">8</span>
+                    </span>
                     <span class="counter-block__text">мест <br>осталось</span>
                 </div>
             </div>
@@ -44,7 +52,7 @@
                 <span class="button-block__text">
                     Запись предоставляется бесплатно только загеристрированым учасникам
                 </span>
-                <div class="button-block__arrow-button">
+                <div class="button-block__arrow-button" id="js-scroll-down">
                     <a href="index.html">
                         <img src="img/arrow.png">
                     </a>
@@ -70,5 +78,76 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            //-----------------------------------------------------------------//
+            // Counter
+            //-----------------------------------------------------------------//
+            var counterSelector1 = '#js-counter-1';
+            var counterSelector2 = '#js-counter-2';
+            var counterAntiSpeed = 1000;
+            setInterval(function() {
+                var digit1 = parseInt($(counterSelector1).text());
+                var digit2 = parseInt($(counterSelector2).text());
+                if (digit2 > 0) {
+                    digit2 --;
+                    setDigit(counterSelector2, digit2);
+                } else if (digit1 > 0) {
+                    digit1--;
+                    digit2 = 9;
+                    setDigit(counterSelector1, digit1);
+                    setDigit(counterSelector2, digit2);
+                } else {
+                    digit1 = 8;
+                    digit2 = 8;
+                    setDigit(counterSelector1, digit1);
+                    setDigit(counterSelector2, digit2);
+                }
+            }, counterAntiSpeed);
+
+            function setDigit(selector, number) {
+                rotateDigit(selector);
+                setTimeout(function() {
+                    $(selector).text(number);
+                }, 250);
+            }
+
+            function rotateDigit(selector) {
+                $(selector).addClass('rotateToScreen').one('webkitAnimationEnd mozAnimationEnd oAnimationEnd msAnimationEnd animationend', function () {
+                    $(this).removeClass("rotateToScreen");
+                });
+            }
+
+            //-----------------------------------------------------------------//
+            // Arrow
+            //-----------------------------------------------------------------//
+            var arrowSelector = '#js-scroll-down';
+            var arrowPosition = 0;
+            var arrowAntiSpeed = 15;
+            var arrowDirection = 'down';
+            var arrowMoveSize = 25;// px
+
+            setInterval(function() {
+                if (arrowDirection === "down") {
+                    arrowPosition++;
+                    if (arrowPosition >= arrowMoveSize) {
+                        arrowDirection = "up";
+                    }
+                } else {
+                    arrowPosition--;
+                    if (arrowPosition <= -arrowMoveSize) {
+                        arrowDirection = "down";
+                    }
+                }
+
+                $(arrowSelector).css('transform', 'translateY('+arrowPosition+'px)');
+            }, arrowAntiSpeed);
+
+            $(arrowSelector).click(function() {
+                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                return false;
+            });
+        </script>
+
     </body>
 </html>

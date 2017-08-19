@@ -129,6 +129,11 @@ body {
                 color: white;
             }
 
+                .counter-block__digit {
+                    display: inline-block;
+                    float: left; /* because of line break in my IDE cause whitespace*/
+                }
+
             .counter-block__text {
                 font-family: Roboto-Light;
                 font-size: 25px;
@@ -471,8 +476,23 @@ body {
         font-size: 28px;
     }
 
-    ..button-block__arrow-button img {
+    .button-block__arrow-button img {
         width: 100%;
     }
 }
 
+
+.rotateToScreen {
+    -webkit-animation:spin 0.5s ease-in-out;
+    -moz-animation:spin 0.5s ease-in-out;
+    animation:spin 0.5s ease-in-out;
+}
+@-moz-keyframes spin {
+    100% { -webkit-transform: rotateX(360deg); transform:rotateX(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotateX(360deg); transform:rotateX(360deg); }
+}
+@keyframes spin {
+    100% { -webkit-transform: rotateX(360deg); transform:rotateX(360deg); }
+}
