@@ -23,6 +23,11 @@
     src: url("../fonts/Roboto-Regular.ttf");
 }
 
+@font-face {
+    font-family: "HelveticaNeueCyr";
+    src: url("../fonts/HelveticaCyr.otf");
+}
+
 
 
 
@@ -39,7 +44,7 @@ body {
     background-image: url("../img/Europe-Brandenburg-Gate-15-wallpapers-1080x1920.png");
     background-size: cover;
 
-    height: 500px;
+    height: 75%;
 }
 
     .top-block__transparent-layer {
@@ -147,6 +152,15 @@ body {
             padding: 1%;
         }
 
+        .button-block__registration:hover {
+            border: 1px solid white;
+            background: #f0e353;
+        }
+
+        .button-block__registration:hover .button-block__registration_text {
+            color: white;
+        }
+
             .button-block__registration_button {
                 display: inline-block;
                 width: 100%;
@@ -187,4 +201,89 @@ body {
                     color: white;
                     padding-top: 1%;
                     padding-bottom: 1%;
+                }
+
+.bottom-block {
+    position: relative;
+    background-color: #55719f;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .left-organizers-block {
+        height: 100%;
+        width: 37%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .left-organizers-block__logo {
+            width: 45%;
+        }
+
+            .left-organizers-block__logo img {
+                width: 100%;
+            }
+
+        .left-organizers-block__text {
+            padding-left: 3%;
+        }
+
+            .left-organizers-block__text span {
+                font-family: Roboto-Regular;
+                font-size: 25px;
+                color: white;
+                text-transform: uppercase;
+            }
+
+        .right-organizers-block {
+            height: 100%;
+            width: 35%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .right-organizers-block__logo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 80px;
+                align-items: center;
+                height: 80px;
+                border: 2px solid white;
+                border-radius: 50%;
+            }
+
+                .right-organizers-block__logo span {
+                    display: inline-block;
+                    font-family: HelveticaNeueCyr;
+                    font-size: 100px;
+                    color: white;
+                    transform: rotate(-40deg) translateY(-8px);
+                }
+
+            .right-organizers-block__text {
+                padding-left: 3%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+                .right-organizers-block__text_big {
+                    font-family: Roboto-Regular;
+                    font-size: 25px;
+                    color: white;
+                    border-bottom: 2px solid white;
+                }
+
+                .right-organizers-block__text_small {
+                    font-family: Roboto-Light;
+                    font-size: 15px;
+                    color: white;
                 }
